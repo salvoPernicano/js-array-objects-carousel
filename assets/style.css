@@ -1,72 +1,88 @@
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
     height: 100vh;
     width: 100vw;
-    background:black;
+    background: black;
 }
 
 figure img{
-    padding: 1em;
-    height: 150px
+    height: 150px;
 }
 
-.container{
+.container {
     width: 80%;
-    height: 80%;
+    height: 80vh;
     margin-left: 5em;
-    background-image: url(./02.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     position: relative;
     box-shadow: -5px 5px 15px 3px #000000;
-    border: 1px solid white;
+    margin: 0 auto;
 }
 
-.rail{
+.outer-container {
+    position: relative;
+    width: 80%;
+}
+
+.rail {
     position: absolute;
     display: flex;
     gap: 5px;
     top: 80%;
     left: 50%;
+    transform: translateX(-50);
     width: 60%;
-
 }
 
-.item{
-    flex-basis: calc(100% / 5 - 5px);
+.item {
+    flex-basis: calc(20% - 5px);
 }
 
-.item img{
+.item img {
     width: 100%;
     height: 100%;
-    max-height: 150px; 
     object-fit: cover;
     box-shadow: -5px 5px 15px 3px #000000;
     border: 1px solid white;
 }
 
-.fa-solid{
-    color :white;
+.fa-solid {
+    color: white;
     background-color: rgba(119, 136, 153, 0.3);
     font-size: 3rem;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.fa-angles-right{
+.fa-angles-right,
+.fa-angles-left {
     position: absolute;
     top: 50%;
-    right: -3%;
+    transform: translateY(-50%);
+    font-size: 2rem;
 }
 
-.fa-angles-left{
-    position: absolute;
-    top: 50%;
-    left: -3%;
+.fa-angles-right {
+    right: 0;
 }
+
+.fa-angles-left {
+    left: 0;
+}
+
+.container img {
+    display: none;
+    height: 100%;
+}
+
+img.active {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+

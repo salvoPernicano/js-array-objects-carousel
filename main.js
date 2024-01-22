@@ -29,19 +29,60 @@ const elementi = [
 const left = document.getElementById("arrowLeft");
 const right = document.getElementById("arrowRight");
 const railHtml = document.getElementById("railContainer")
+const mainContainerHtml = document.getElementById("mainContainer")
 
+
+for (let i=0; i < elementi.length; i++){
+    if( i === 0 ){
+        mainContainerHtml.innerHTML += `
+        <img class="active" src="${elementi[i].foto}" alt="immagini carosello">
+        `
+    } else {
+        mainContainerHtml.innerHTML += `
+        <img src="${elementi[i].foto}" alt="immagini carosello">
+        `
+    }    
+}
+
+let currentImg = 0;
 left.addEventListener("click", function(){
     console.log("click left");
+    let imageArray = document.querySelectorAll(".container img");
+    console.log(imageArray);
+    imageArray[currentImg].classList.remove("active");
+    if (currentImg == imageArray.length -1){
+        currentImg = 0;
+    } else {
+        currentImg--;
+    }
+    imageArray[currentImg].classList.add("active");
 })
+
+
 right.addEventListener("click", function(){
     console.log("click right");
+    let imageArray = document.querySelectorAll(".container img");
+    console.log(imageArray);
+    imageArray[currentImg].classList.remove("active");
+    if (currentImg == imageArray.length -1){
+        currentImg = 0;
+    } else {
+        currentImg++;
+    }
+    imageArray[currentImg].classList.add("active");
 })
 
-
-for (let i=0; i<elementi.length; i++){
-    railHtml.innerHTML += `
-    <div class="item">
-    <img src="${elementi[i].foto}" alt="">
-    </div>
-    `
+function showImage(index) {
+    const imageArray = document.querySelectorAll(".container img");
+    imageArray[currentImg].classList.remove("active");
+    currentImg = index;
+    imageArray[currentImg].classList.add("active");
 }
+
+function autoChangeImage() {
+    showImage((currentImg + 1) % elementi.length);
+}
+
+let autoChangeInterval = setInterval(autoChangeImage, 3000);
+
+
