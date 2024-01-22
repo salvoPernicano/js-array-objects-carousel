@@ -40,6 +40,12 @@ figure img{
 
 .item {
     flex-basis: calc(20% - 5px);
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.item:hover{
+    transform: scale(1.1);
 }
 
 .item img {

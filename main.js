@@ -31,6 +31,19 @@ const right = document.getElementById("arrowRight");
 const railHtml = document.getElementById("railContainer")
 const mainContainerHtml = document.getElementById("mainContainer")
 
+let currentImg = 0;
+function showImage(index) {
+    const imageArray = document.querySelectorAll(".container img");
+    imageArray[currentImg].classList.remove("active");
+    currentImg = index;
+    imageArray[currentImg].classList.add("active");
+}
+
+function autoChangeImage() {
+    showImage((currentImg + 1) % elementi.length);
+}
+
+let autoChangeInterval = setInterval(autoChangeImage, 3000);
 
 for (let i=0; i < elementi.length; i++){
     if( i === 0 ){
@@ -48,51 +61,28 @@ for (let j = 0; j < elementi.length; j++){
     railHtml.innerHTML += `
     <div class="item">
     <img src="${elementi[j].foto}" alt="">
-    </div>
-    
+    </div>    
     `
-    
 }
 
-let currentImg = 0;
+document.querySelectorAll('.item').forEach((element, index) => {
+    element.addEventListener('click', () => {
+        clearInterval(autoChangeInterval); 
+        showImage(index);
+        autoChangeInterval = setInterval(autoChangeImage, 3000);
+    });
+});
+
+
 left.addEventListener("click", function(){
-    console.log("click left");
-    let imageArray = document.querySelectorAll(".container img");
-    console.log(imageArray);
-    imageArray[currentImg].classList.remove("active");
-    if (currentImg == imageArray.length -1){
-        currentImg = 0;
-    } else {
-        currentImg--;
-    }
-    imageArray[currentImg].classList.add("active");
+    showImage((currentImg - 1 + elementi.length) % elementi.length);
 })
 
 
 right.addEventListener("click", function(){
-    console.log("click right");
-    let imageArray = document.querySelectorAll(".container img");
-    console.log(imageArray);
-    imageArray[currentImg].classList.remove("active");
-    if (currentImg == imageArray.length -1){
-        currentImg = 0;
-    } else {
-        currentImg++;
-    }
-    imageArray[currentImg].classList.add("active");
+    showImage((currentImg + 1) % elementi.length);
 })
 
-function showImage(index) {
-    const imageArray = document.querySelectorAll(".container img");
-    imageArray[currentImg].classList.remove("active");
-    currentImg = index;
-    imageArray[currentImg].classList.add("active");
-}
 
-function autoChangeImage() {
-    showImage((currentImg + 1) % elementi.length);
-}
-
-let autoChangeInterval = setInterval(autoChangeImage, 3000);
 
 
