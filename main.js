@@ -38,10 +38,10 @@ right.addEventListener("click", function(){
 })
 
 
-for (let i=1; i<=elementi.length; i++){
+for (let i=0; i<elementi.length; i++){
     railHtml.innerHTML += `
     <div class="item">
-    <img src="./assets/0${i}.jpg" alt="">
+    <img src="${elementi[i].foto}" alt="">
     </div>
     `
 }

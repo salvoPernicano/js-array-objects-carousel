@@ -47,8 +47,8 @@ figure img{
     height: 100%;
     max-height: 150px; 
     object-fit: cover;
-box-shadow: -5px 5px 15px 3px #000000;
-border: 1px solid white;
+    box-shadow: -5px 5px 15px 3px #000000;
+    border: 1px solid white;
 }
 
 .fa-solid{
