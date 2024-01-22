@@ -44,6 +44,16 @@ for (let i=0; i < elementi.length; i++){
     }    
 }
 
+for (let j = 0; j < elementi.length; j++){
+    railHtml.innerHTML += `
+    <div class="item">
+    <img src="${elementi[j].foto}" alt="">
+    </div>
+    
+    `
+    
+}
+
 let currentImg = 0;
 left.addEventListener("click", function(){
     console.log("click left");
