@@ -56,6 +56,7 @@ border: 1px solid white;
     background-color: rgba(119, 136, 153, 0.3);
     font-size: 3rem;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .fa-angles-right{
